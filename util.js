@@ -15,7 +15,6 @@ define(function(require, exports, module) {
         },
         /**
         *   bind all function for a object
-        *   By guankaishe@ucweb.com
         */
         bindAll: function (object) {
             util.each(object, function (func, name) {
