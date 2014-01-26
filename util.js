@@ -89,6 +89,15 @@ define(function(require, exports, module) {
                 return this.parent.call(this, $tar.parent(), maxlevel, judge, _count);
             }
         },
+        repeat: function(str, times) {
+            var index = 0,
+                ctn = '';
+            while (index < times) {
+                ctn += str;
+                index++;
+            }
+            return ctn;
+        },
         /**
          *  Array.slice
          */
