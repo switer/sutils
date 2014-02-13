@@ -7,7 +7,7 @@ var util = {
     /**
      *  Function.bind
      */
-    bind: function (context, func) {
+    bind: function (func, context) {
         return function () {
             func.apply(context, arguments);
         }
@@ -15,10 +15,11 @@ var util = {
     /**
     *   bind all function for a object
     */
-    bindAll: function (object) {
+    bindAll: function (object, ctx) {
+        ctx = ctx || object;
         util.each(object, function (func, name) {
             if (util.type(func) === 'function') {
-                object[name] = util.bind(func, object);
+                object[name] = util.bind(func, ctx);
             }
         });
         return object;
