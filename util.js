@@ -116,6 +116,31 @@ var util = {
             type = type.substring(8, type.length - 1);
         }
         return type;
+    },
+    /**
+     *  针对ajax请求封装一下
+     **/
+    request: function (method, url, param, /*, [option]*/ success, error) {
+        var args = Array.prototype.slice(arguments),
+            option = {},
+            setting;
+
+        if (util.type(args[3]) == 'object') {
+            option = args[3];
+            success = args[4];
+            error = args[5]
+        }
+        // 拼裝ajax請求参数对象
+        setting = util.extend({
+            url: url,
+            method: method,
+            data: param,
+            dataType: 'json',
+            success: success,
+            error: error
+        }, option);
+
+        $.ajax(setting);
     }
 };
 module.exports = util;
